@@ -1,4 +1,8 @@
 ---
+import '../styles/global.css';
+import Navigations from '../components/navigations.astro';
+import Footer from '../components/footer.astro';
+
 const identity = {
   firstName: "Robin",
   country: "Canada",
@@ -13,10 +17,11 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = true;
 const goal = 3;
+const skillColor = "navy";
+
 ---
 
 <html lang="en">
-
 
 	<head>
 		<meta charset="utf-8" />
@@ -25,19 +30,24 @@ const goal = 3;
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-    <style>
+    <style define:vars={{skillColor}}>
       h1 {
-        color: purple;
+        color: var(--skillColor);
         font-size: 4rem;
       }
+      .skill {
+      color: var(--skillColor); 
+      font-weight: bold; 
+     }
     </style>
 	<body>
-		<a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">blog</a> 
+    <Navigations />
         <h1>{pageTitle}</h1>
         <h2>... and my new Astro site!</h2>
-
+        <p>My skills are:</p>
+        <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
         <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
 
         <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>	
@@ -46,6 +56,6 @@ const goal = 3;
         {finished && <p>I finished this tutorial!</p>}
 
         {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-
+        <Footer/>          
     </body>
 </html>
