@@ -9,6 +9,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.7"
-  }
+    "astro": "^5.13.8"
+  },
+  "description": "```sh npm create astro@latest -- --template minimal ```",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotmailrob/astro_demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hotmailrob/astro_demo/issues"
+  },
+  "homepage": "https://github.com/hotmailrob/astro_demo#readme"
 }
