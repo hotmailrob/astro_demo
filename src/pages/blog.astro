@@ -2,14 +2,16 @@
 const pageTitle = "Blog";
 import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+
 ---
 
 
 <BaseLayout pageTitle={pageTitle}>
 	<h1>Blog Entry</h1>
 	<h2>Very insightful blog entry will go here</h2>
-
-    <ul>
-      <li><a href="/posts/post-1/" title="Open my first post in new tab">Post 1</a></li>
-    </ul>
-</BaseLayout>
+	<ul>
+		{allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+	</ul>
+	</BaseLayout>
